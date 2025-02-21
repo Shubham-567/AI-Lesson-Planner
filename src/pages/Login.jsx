@@ -16,7 +16,7 @@ function Login() {
   const handleLogin = () => {
     if (email.trim() === demoEmail && password.trim() === demoPass) {
       localStorage.setItem("isAuthenticated", "true");
-      navigate("/lesson-planner");
+      navigate("/");
     } else {
       setError("Invalid email or password.");
     }
