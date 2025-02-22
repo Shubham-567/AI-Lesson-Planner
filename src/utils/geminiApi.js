@@ -12,23 +12,82 @@ export async function generateLessonPlan(lessonDetails) {
       throw new Error("API key is missing. Check your .env file.");
     }
 
-    const prompt = `Generate a detailed lesson plan with:
-            Topic: ${lessonDetails.topic}
-            Grade Level: ${lessonDetails.gradeLevel}
-            Main Concept: ${lessonDetails.mainConcept}
-            Subtopics: ${lessonDetails.subtopics}
-            Materials: ${lessonDetails.materials}
-            Learning Objectives: ${lessonDetails.objectives}
-            Lesson Outline: ${lessonDetails.outline}
+    const prompt = `
+    Generate a lesson plan in **JSON format** with the following structure:
+    
+    {
+      Topic: "${lessonDetails.topic}",
+      Summary: "Briefly describe what this lesson will cover.",
+      Date: "",
+      Subject: "Relevant subject for this lesson.",
+      GradeLevel: "${lessonDetails.gradeLevel}",
+      MainTopic: "${lessonDetails.mainConcept}",
+      Subtopics: ["${lessonDetails.subtopics.split(", ").join('", "')}"],
+      MaterialsNeeded: ["List all materials required for conducting this lesson."],
+      LearningObjectives: [
+        "Objective 1 (Bloom's Taxonomy category).",
+        "Objective 2 (Bloom's Taxonomy category).",
+        "Objective 3 (Bloom's Taxonomy category)."
+      ],
+      LessonOutline: [
+        {
+          "Duration": "xx min",
+          "Activity": "Springboard question or activity",
+          "Remarks": "Notes or teacher guidance."
+        },
+        {
+          "Duration": "xx min",
+          "Activity": "Introduction to the main topic",
+          "Remarks": "Explanation, examples, or engaging content."
+        },
+        {
+          "Duration": "xx min",
+          "Activity": "Review previous concepts (if needed)",
+          "Remarks": "Clarify misconceptions or build on prior knowledge."
+        },
+        {
+          "Duration": "xx min",
+          "Activity": "Main Discussion",
+          "Remarks": "Detailed content explanation and student interaction."
+        },
+        {
+          "Duration": "xx min",
+          "Activity": "Independent or Guided Activities",
+          "Remarks": "Hands-on activities or group work."
+        },
+        {
+          "Duration": "xx min",
+          "Activity": "Assessment or Evaluation",
+          "Remarks": "Quiz, worksheet, or class discussion."
+        },
+        {
+          "Duration": "xx min",
+          "Activity": "Conclusion & Wrap-up",
+          "Remarks": "Review key concepts and preview next lesson."
+        }
+      ],
+      Notes: "Add any final teacher observations or reminders."
+    }
 
-            Ensure it's structured clearly with engaging classroom activities.`;
+    Ensure the response is **strictly valid JSON** with no extra text, no explanations, and no markdown formatting like \`\`\`json or \`\`\`.
+    `;
 
     // Generate response from Gemini api
     const result = await model.generateContent(prompt);
-    const responseText = result.response.text();
+    let responseText = result.response.text();
 
-    console.log(responseText);
-    return responseText; // generated lesson
+    responseText = responseText.replace(/```json|```/g, "").trim();
+
+    // console.log(responseText);
+
+    try {
+      const jsonResponse = JSON.parse(responseText);
+      console.log(jsonResponse);
+      return jsonResponse; // generated lesson
+    } catch (error) {
+      console.error("JSON Parsing Error:", error.message);
+      return { error: "Failed to parse JSON. Check API response for format." };
+    }
   } catch (error) {
     console.error("Error generating lesson", error.message || error);
 

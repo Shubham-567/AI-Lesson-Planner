@@ -1,4 +1,9 @@
 import { useState } from "react";
+import { useReactToPrint } from "react-to-print";
+import { jsPDF } from "jspdf";
+import autoTable from "jspdf-autotable";
+
+// shadcn components
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -8,7 +13,7 @@ import { Accordion } from "@/components/ui/accordion";
 
 // response from api
 import { generateLessonPlan } from "@/utils/geminiApi";
-import { useReactToPrint } from "react-to-print";
+import { generatePDF } from "@/utils/pdfGenerator";
 
 function LessonPlanner() {
   // const [lesson, setLesson] = useState({
@@ -60,10 +65,6 @@ function LessonPlanner() {
       setLoading(false);
     }
   };
-
-  const handlePrint = useReactToPrint({
-    content: () => document.getElementById("lesson-content"),
-  });
 
   return (
     <div className='container mx-auto p-6'>
@@ -141,10 +142,14 @@ function LessonPlanner() {
         <Card id='lesson-content' className='p-6 mt-4 max-w-lg mx-auto'>
           <Accordion title='Generated Lesson'>
             <h3 className='text-lg font-semibold mb-2'>Generated Lesson </h3>
-            <p className='whitespace-pre-line'>{generatedLesson}</p>
+            <p className='whitespace-pre-line'>
+              {JSON.stringify(generatedLesson)}
+            </p>
           </Accordion>
 
-          <Button onClick={handlePrint} className='mt-4 w-full'>
+          <Button
+            onClick={() => generatePDF(generatedLesson)}
+            className='mt-4 w-full'>
             Download as PDF
           </Button>
         </Card>
