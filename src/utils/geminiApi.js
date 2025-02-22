@@ -18,7 +18,7 @@ export async function generateLessonPlan(lessonDetails) {
     {
       Topic: "${lessonDetails.topic}",
       Summary: "Briefly describe what this lesson will cover.",
-      Date: "",
+      Date: "${new Date()} Just include this: yyyy-mm-dd",
       Subject: "Relevant subject for this lesson.",
       GradeLevel: "${lessonDetails.gradeLevel}",
       MainTopic: "${lessonDetails.mainConcept}",

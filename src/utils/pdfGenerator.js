@@ -1,8 +1,8 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 
-export const generatePDF = (generatedLesson) => {
-  if (!generatedLesson) {
+export const generatePDF = (lesson) => {
+  if (!lesson) {
     alert("No lesson plan generated yet!");
     return;
   }
@@ -21,7 +21,7 @@ export const generatePDF = (generatedLesson) => {
 
   // Topic Section
   doc.setFontSize(18);
-  doc.text(`Topic: ${generatedLesson.Topic || "N/A"}`, marginLeft, y);
+  doc.text(`Topic: ${lesson.Topic || "N/A"}`, marginLeft, y);
   y += 6;
   doc.line(marginLeft, y, pageWidth - marginLeft, y);
   y += 12;
@@ -49,18 +49,18 @@ export const generatePDF = (generatedLesson) => {
 
   // Summary Section
   addSectionHeading("Summary", [96, 92, 254]);
-  addParagraph(generatedLesson.Summary);
+  addParagraph(lesson.Summary);
 
   // Lesson Details Table
   autoTable(doc, {
     startY: y,
     head: [["Section", "Details"]],
     body: [
-      ["Date", generatedLesson.Date || "N/A"],
-      ["Subject", generatedLesson.Subject || "N/A"],
-      ["Year Group or Grade Level", generatedLesson.GradeLevel || "N/A"],
-      ["Main Topic or Unit", generatedLesson.MainTopic || "N/A"],
-      ["Subtopics or Key Concepts", generatedLesson.Subtopics || "N/A"],
+      ["Date", lesson.Date || "N/A"],
+      ["Subject", lesson.Subject || "N/A"],
+      ["Year Group or Grade Level", lesson.GradeLevel || "N/A"],
+      ["Main Topic or Unit", lesson.MainTopic || "N/A"],
+      ["Subtopics or Key Concepts", lesson.Subtopics || "N/A"],
     ],
     theme: "grid",
     styles: { fontSize: 12, cellPadding: 3 },
@@ -74,13 +74,10 @@ export const generatePDF = (generatedLesson) => {
   // Material Needed
   addSectionHeading("Material Needed", [0, 0, 0]);
 
-  if (
-    generatedLesson.MaterialsNeeded &&
-    generatedLesson.MaterialsNeeded.length > 0
-  ) {
-    const materialText = generatedLesson.MaterialsNeeded.map(
-      (item) => `• ${item}`
-    ).join("\n");
+  if (lesson.MaterialsNeeded && lesson.MaterialsNeeded.length > 0) {
+    const materialText = lesson.MaterialsNeeded.map((item) => `• ${item}`).join(
+      "\n"
+    );
 
     addParagraph(materialText);
   } else {
@@ -89,7 +86,7 @@ export const generatePDF = (generatedLesson) => {
 
   // Learning Objectives
   addSectionHeading("Learning Objectives", [96, 92, 254]);
-  addParagraph(generatedLesson.LearningObjectives);
+  addParagraph(lesson.LearningObjectives);
 
   // Page 2
   doc.addPage();
@@ -102,8 +99,8 @@ export const generatePDF = (generatedLesson) => {
   autoTable(doc, {
     startY: y,
     head: [["Duration", "Guide", "Remarks"]],
-    body: generatedLesson.LessonOutline
-      ? generatedLesson.LessonOutline.map((item) => [
+    body: lesson.LessonOutline
+      ? lesson.LessonOutline.map((item) => [
           item.Duration || "N/A",
           item.Activity || "N/A",
           item.Remarks || "N/A",
@@ -119,9 +116,9 @@ export const generatePDF = (generatedLesson) => {
 
   // Notes Section
   addSectionHeading("Notes", [96, 92, 254]);
-  addParagraph(generatedLesson.Notes);
+  addParagraph(lesson.Notes);
 
   // Save PDF
-  doc.save(`${generatedLesson.Topic}-LessonPlan.pdf`);
+  doc.save(`${lesson.Topic}-LessonPlan.pdf`);
   console.log("PDF Downloaded");
 };
