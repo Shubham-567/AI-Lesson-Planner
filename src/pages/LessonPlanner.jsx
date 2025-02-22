@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -7,18 +6,31 @@ import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Accordion } from "@/components/ui/accordion";
 
+// response from api
 import { generateLessonPlan } from "@/utils/geminiApi";
 import { useReactToPrint } from "react-to-print";
 
 function LessonPlanner() {
+  // const [lesson, setLesson] = useState({
+  //   topic: "",
+  //   gradeLevel: "",
+  //   mainConcept: "",
+  //   subtopics: "",
+  //   materials: "",
+  //   objectives: "",
+  //   outline: "",
+  // });
+
   const [lesson, setLesson] = useState({
-    topic: "",
-    gradeLevel: "",
-    mainConcept: "",
-    subtopics: "",
-    materials: "",
-    objectives: "",
-    outline: "",
+    topic: "The Solar System",
+    gradeLevel: "6th Grade",
+    mainConcept:
+      "Understanding the planets, their characteristics, and their movement around the Sun.",
+    subtopics: "Planets, Moons, The Sun, Orbits, Gravity, Asteroids, Comets",
+    materials:
+      "Model of the solar system, Flashcards, Globe, Videos of space, Charts of planets",
+    objectives: `1. Identify the planets in the solar system.\n2. Explain the role of gravity in planetary orbits.\n3. Compare the size, distance, and composition of different planets.`,
+    outline: `1. Introduction\n   - Ask students: "Can you name all the planets?"\n2. Discussion on Planets & Their Features\n   - Explain terrestrial and gas planets.\n   - Show planet sizes using a model.\n3. Gravity & Orbits\n   - Demonstrate gravity with a simple ball experiment.\n4. Interactive Activity\n   - Students create a mini solar system model.\n5. Assessment\n   - Quiz on planet names, order, and characteristics.`,
   });
 
   const [generatedLesson, setGeneratedLesson] = useState(null);
@@ -43,7 +55,7 @@ function LessonPlanner() {
       const response = await generateLessonPlan(lesson);
       setGeneratedLesson(response);
     } catch (err) {
-      setError("Faild to generate lesson plan. Please try again.");
+      setError("Failed to generate lesson plan. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -128,9 +140,10 @@ function LessonPlanner() {
       {generatedLesson && (
         <Card id='lesson-content' className='p-6 mt-4 max-w-lg mx-auto'>
           <Accordion title='Generated Lesson'>
-            <p>{generatedLesson}</p>
+            <h3 className='text-lg font-semibold mb-2'>Generated Lesson </h3>
+            <p className='whitespace-pre-line'>{generatedLesson}</p>
           </Accordion>
-          s
+
           <Button onClick={handlePrint} className='mt-4 w-full'>
             Download as PDF
           </Button>
