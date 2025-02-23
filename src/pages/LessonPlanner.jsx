@@ -1,7 +1,4 @@
 import { useState } from "react";
-import { useReactToPrint } from "react-to-print";
-import { jsPDF } from "jspdf";
-import autoTable from "jspdf-autotable";
 
 // shadCN components
 import { Input } from "@/components/ui/input";
@@ -181,12 +178,9 @@ function LessonPlanner() {
 
           <Skeleton className='h-6 mb-2' />
           <Skeleton className='h-4 w-3/4 mb-2' />
-          <Skeleton className='h-4 w-1/2 mb-2' />
 
-          <Skeleton className='h-6 mb-2' />
-          <Skeleton className='h-4 w-3/4 mb-2' />
-
-          <Skeleton className='h-10 w-full mt-4' />
+          <Skeleton className='h-8 w-full mt-4' />
+          <Skeleton className='h-8 w-full mt-4' />
         </Card>
       ) : (
         // generated lesson plan

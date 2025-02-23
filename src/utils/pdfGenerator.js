@@ -60,7 +60,11 @@ export const generatePDF = (lesson) => {
       ["Subject", lesson.Subject || "N/A"],
       ["Year Group or Grade Level", lesson.GradeLevel || "N/A"],
       ["Main Topic or Unit", lesson.MainTopic || "N/A"],
-      ["Subtopics or Key Concepts", lesson.Subtopics || "N/A"],
+      [
+        "Subtopics or Key Concepts",
+        lesson.Subtopics.toString().replace(/,/g, ", ") || "N/A",
+        // adds space after "," like this: ", "
+      ],
     ],
     theme: "grid",
     styles: { fontSize: 12, cellPadding: 3 },

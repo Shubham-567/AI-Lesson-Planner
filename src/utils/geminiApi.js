@@ -31,9 +31,7 @@ export async function generateLessonPlan(lessonDetails) {
       ],
       LessonOutline: [
 
-      // Total Duration: ${
-        lessonDetails.duration
-      }, if duration is empty string you can use whatever you want.
+      // Total Duration: ${lessonDetails.duration}, Default duration is 1 Hour
         {
           "Duration": "xx min",
           "Activity": "Springboard question or activity",
