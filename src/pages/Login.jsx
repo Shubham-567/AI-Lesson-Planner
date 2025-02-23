@@ -15,7 +15,7 @@ function Login() {
 
   const handleLogin = () => {
     if (email.trim() === demoEmail && password.trim() === demoPass) {
-      localStorage.setItem("isAuthenticated", "true");
+      sessionStorage.setItem("isAuthenticated", "true");
       navigate("/");
     } else {
       setError("Invalid email or password.");
@@ -43,7 +43,13 @@ function Login() {
           aria-label='Password'
         />
 
-        {error && <p className='text-red-500 text-sm'>{error} </p>}
+        {error && (
+          <div
+            className='p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400'
+            role='alert'>
+            <span className='font-medium'>Error:</span> {error}
+          </div>
+        )}
 
         <Button
           onClick={handleLogin}
@@ -53,6 +59,9 @@ function Login() {
           }`}>
           Login
         </Button>
+
+        <p>Email: {demoEmail}</p>
+        <p>Password: {demoPass}</p>
       </Card>
     </div>
   );

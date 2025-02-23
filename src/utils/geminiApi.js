@@ -18,7 +18,7 @@ export async function generateLessonPlan(lessonDetails) {
     {
       Topic: "${lessonDetails.topic}",
       Summary: "Briefly describe what this lesson will cover.",
-      Date: "${new Date()} Just include this: yyyy-mm-dd",
+      Date: "${new Date()} Just include this: dd-mm-yyyy",
       Subject: "Relevant subject for this lesson.",
       GradeLevel: "${lessonDetails.gradeLevel}",
       MainTopic: "${lessonDetails.mainConcept}",
@@ -30,6 +30,10 @@ export async function generateLessonPlan(lessonDetails) {
         "Objective 3 (Bloom's Taxonomy category)."
       ],
       LessonOutline: [
+
+      // Total Duration: ${
+        lessonDetails.duration
+      }, if duration is empty string you can use whatever you want.
         {
           "Duration": "xx min",
           "Activity": "Springboard question or activity",
@@ -69,6 +73,8 @@ export async function generateLessonPlan(lessonDetails) {
       Notes: "Add any final teacher observations or reminders."
     }
 
+    Activity and Remarks should be concise.
+
     Ensure the response is **strictly valid JSON** with no extra text, no explanations, and no markdown formatting like \`\`\`json or \`\`\`.
     `;
 
@@ -78,11 +84,14 @@ export async function generateLessonPlan(lessonDetails) {
 
     responseText = responseText.replace(/```json|```/g, "").trim();
 
-    // console.log(responseText);
-
     try {
       const jsonResponse = JSON.parse(responseText);
-      console.log(jsonResponse);
+
+      if (!jsonResponse || Object.keys(jsonResponse).length === 0) {
+        throw new Error("Empty or invalid response");
+      }
+
+      // console.log("valid json response:", jsonResponse);
       return jsonResponse; // generated lesson
     } catch (error) {
       console.error("JSON Parsing Error:", error.message);

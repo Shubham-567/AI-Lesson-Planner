@@ -12,8 +12,13 @@ import { generatePDF } from "@/utils/pdfGenerator";
 const LessonAccordion = ({ lesson }) => {
   if (!lesson) return null;
 
+  // console.log("lesson: ", lesson);
+
   return (
-    <Card id='lesson-content' className='p-6 mt-4 max-w-lg mx-auto'>
+    <Card id='lesson-content' className='p-6 w-full md:w-1/2'>
+      <h2 className='text-xl font-semibold text-center'>
+        Generated Lesson Plan
+      </h2>
       <Accordion type='single' collapsible>
         <AccordionItem value='topic'>
           <AccordionTrigger>Topic</AccordionTrigger>
@@ -39,13 +44,20 @@ const LessonAccordion = ({ lesson }) => {
               <strong>Subject:</strong> {lesson.Subject}
             </p>
             <p>
-              <strong>Grade Level:</strong> {lesson.GradeLevel}
+              <strong>Year Group or Grade Level:</strong> {lesson.GradeLevel}
             </p>
           </AccordionContent>
         </AccordionItem>
 
+        <AccordionItem value='main-topics'>
+          <AccordionTrigger>Main Topic or Unit</AccordionTrigger>
+          <AccordionContent>
+            <p>{lesson.MainTopic}</p>
+          </AccordionContent>
+        </AccordionItem>
+
         <AccordionItem value='subtopics'>
-          <AccordionTrigger>Subtopics</AccordionTrigger>
+          <AccordionTrigger>Subtopics or Key Concepts</AccordionTrigger>
           <AccordionContent>
             <ul className='list-disc ml-4'>
               {lesson.Subtopics.map((subtopic, index) => (
