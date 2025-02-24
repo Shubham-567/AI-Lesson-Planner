@@ -80,7 +80,7 @@ function Navbar() {
               </li>
               <li>
                 <NavLink
-                  to='/'
+                  to='/Login'
                   className={({ isActive }) =>
                     isActive
                       ? "text-blue-700 font-semibold"
