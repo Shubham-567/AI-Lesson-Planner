@@ -7,7 +7,7 @@ function Navbar() {
 
   return (
     <header className='absolute top-0 left-0 w-full bg-white shadow-sm z-50'>
-      <nav className='max-w-screen-xl min-w-[312px] mx-auto p-4'>
+      <nav className='max-w-screen-xl min-w-[312px] mx-auto p-4 '>
         <div className='flex flex-wrap items-center justify-between'>
           {/* Logo */}
           <NavLink to='/' className='flex items-center space-x-3'>
