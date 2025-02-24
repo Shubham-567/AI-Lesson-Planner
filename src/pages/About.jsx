@@ -1,0 +1,52 @@
+import { Link } from "react-router-dom";
+import Navbar from "@/components/ui/Navbar";
+import aboutImg from "@/assets/about-image.jpg";
+
+function About() {
+  return (
+    <>
+      <Navbar />
+
+      <section className='bg-gradient min-h-screen flex items-center justify-center px-6 py-12 pt-24'>
+        <div className='max-w-5xl w-full bg-white shadow-lg rounded-lg p-10 md:p-16 flex flex-col md:flex-row items-center gap-10'>
+          {/* Left section Text Content */}
+          <div className='flex-1 text-center md:text-left'>
+            <h1 className='text-4xl font-extrabold text-gray-900 md:text-5xl leading-tight'>
+              About <span className='text-blue-600'>PlanEase</span>
+            </h1>
+            <div className='w-32 h-1 bg-blue-500 my-4 mx-auto md:mx-0'></div>
+
+            <p className='text-lg text-gray-700 md:text-xl mt-4 leading-relaxed'>
+              PlanEase simplifies lesson planning with AI, helping teachers
+              create structured, engaging lessons in minutes.
+            </p>
+
+            <p className='text-gray-600 text-lg mt-4'>
+              With an intuitive interface and easy PDF downloads, planning is
+              fast, effortless, and stress-free.
+            </p>
+
+            <div className='mt-6'>
+              <Link to='/lesson-planner'>
+                <button className='px-6 py-3 bg-blue-600 text-white font-medium text-lg rounded-lg shadow-md hover:bg-blue-700 hover:-translate-y-1 transform transition duration-300'>
+                  Get Started
+                </button>
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Section Image */}
+          <div className='flex-1 flex justify-center'>
+            <img
+              src={aboutImg}
+              alt='Teaching with AI'
+              className='rounded-lg shadow-md w-full max-w-lg'
+            />
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+export default About;

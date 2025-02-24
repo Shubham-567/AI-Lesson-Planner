@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import LessonPlanner from "./pages/LessonPlanner";
+import About from "./pages/About";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+        <Route path='/about' element={<About />} />
       </Routes>
     </Router>
   );

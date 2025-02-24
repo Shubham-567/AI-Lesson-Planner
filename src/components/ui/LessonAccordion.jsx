@@ -31,7 +31,9 @@ const LessonAccordion = ({ lesson }) => {
   };
 
   return (
-    <Card id='lesson-content' className='p-6 w-full md:w-3/4 lg:w-1/2 mx-auto'>
+    <Card
+      id='lesson-content'
+      className='p-6 w-full min-w-[250px] max-w-xl md:w-2/3 lg:w-1/2 '>
       <h2 className='text-xl font-semibold text-center'>
         {isEditing ? "Edit Lesson Plan" : "Generated Lesson Plan"}
       </h2>
@@ -39,7 +41,7 @@ const LessonAccordion = ({ lesson }) => {
       <Accordion type='single' collapsible>
         <AccordionItem value='topic'>
           <AccordionTrigger>Topic</AccordionTrigger>
-          <AccordionContent>
+          <AccordionContent className='p-[2px]'>
             {isEditing ? (
               <Input
                 value={editedLesson.Topic}
@@ -53,7 +55,7 @@ const LessonAccordion = ({ lesson }) => {
 
         <AccordionItem value='summary'>
           <AccordionTrigger>Summary</AccordionTrigger>
-          <AccordionContent>
+          <AccordionContent className='p-[2px]'>
             {isEditing ? (
               <Textarea
                 value={editedLesson.Summary}
@@ -68,7 +70,7 @@ const LessonAccordion = ({ lesson }) => {
 
         <AccordionItem value='details'>
           <AccordionTrigger>Lesson Details</AccordionTrigger>
-          <AccordionContent>
+          <AccordionContent className='p-[2px]'>
             {isEditing ? (
               <>
                 <Label>Date</Label>
@@ -106,7 +108,7 @@ const LessonAccordion = ({ lesson }) => {
 
         <AccordionItem value='subtopics'>
           <AccordionTrigger>Subtopics or Key Concepts</AccordionTrigger>
-          <AccordionContent>
+          <AccordionContent className='p-[2px]'>
             {isEditing ? (
               <Textarea
                 value={editedLesson.Subtopics.join("\n")}
@@ -125,7 +127,7 @@ const LessonAccordion = ({ lesson }) => {
 
         <AccordionItem value='materials'>
           <AccordionTrigger>Materials Needed</AccordionTrigger>
-          <AccordionContent>
+          <AccordionContent className='p-[2px]'>
             {isEditing ? (
               <Textarea
                 value={editedLesson.MaterialsNeeded.join("\n")}
@@ -144,7 +146,7 @@ const LessonAccordion = ({ lesson }) => {
 
         <AccordionItem value='objectives'>
           <AccordionTrigger>Learning Objectives</AccordionTrigger>
-          <AccordionContent>
+          <AccordionContent className='p-[2px]'>
             {isEditing ? (
               <Textarea
                 value={editedLesson.LearningObjectives.join("\n")}
@@ -163,7 +165,7 @@ const LessonAccordion = ({ lesson }) => {
 
         <AccordionItem value='outline'>
           <AccordionTrigger>Lesson Outlines</AccordionTrigger>
-          <AccordionContent>
+          <AccordionContent className='p-[2px]'>
             {editedLesson.LessonOutline.map((step, index) => (
               <div
                 key={index}
@@ -210,7 +212,7 @@ const LessonAccordion = ({ lesson }) => {
 
         <AccordionItem value='notes'>
           <AccordionTrigger>Notes</AccordionTrigger>
-          <AccordionContent>
+          <AccordionContent className='p-[2px]'>
             {isEditing ? (
               <Textarea
                 value={editedLesson.Notes}

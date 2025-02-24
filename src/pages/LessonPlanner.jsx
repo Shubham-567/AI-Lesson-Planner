@@ -58,9 +58,10 @@ function LessonPlanner() {
   return (
     <>
       <Navbar />
-      <section className='bg-gradient min-h-screen'>
-        <div className='container flex flex-row items-start justify-center gap-6 mx-auto p-6'>
-          <Card className='p-6 space-y-4 w-full md:w-1/2'>
+
+      <section className='bg-gradient min-h-screen pt-20 px-4 sm:px-6 lg:px-8'>
+        <div className='container flex flex-col items-center md:flex-row md:items-start justify-center gap-6 mx-auto px-0 py-2  sm:p-2'>
+          <Card className='p-6 space-y-4 min-w-[250px] max-w-xl w-full md:w-2/3 lg:w-1/2'>
             <h2 className='text-xl font-semibold text-center'>
               Lesson Planner
             </h2>
@@ -163,7 +164,7 @@ function LessonPlanner() {
           </Card>
 
           {loading ? (
-            <Card className='p-6 w-full md:w-1/2'>
+            <Card className='p-6 w-full min-w-[250px] max-w-xl md:w-2/3 lg:w-1/2 '>
               <h2 className='text-xl font-semibold text-center mb-4'>
                 <Skeleton className='h-6 w-3/4 mx-auto' />
               </h2>
@@ -176,6 +177,10 @@ function LessonPlanner() {
 
               <Skeleton className='h-6 mb-2' />
               <Skeleton className='h-4 w-3/4 mb-2' />
+
+              <Skeleton className='h-6 mb-2' />
+              <Skeleton className='h-4 w-3/4 mb-2' />
+              <Skeleton className='h-4 w-1/2 mb-2' />
 
               <Skeleton className='h-6 mb-2' />
               <Skeleton className='h-4 w-3/4 mb-2' />
