@@ -18,4 +18,7 @@ export default defineConfig({
     port: 5173,
     allowedHosts: ["planease.onrender.com"],
   },
+  build: {
+    chunkSizeWarningLimit: 1000, // default is 500
+  },
 });

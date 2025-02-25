@@ -166,47 +166,49 @@ const LessonAccordion = ({ lesson }) => {
         <AccordionItem value='outline'>
           <AccordionTrigger>Lesson Outlines</AccordionTrigger>
           <AccordionContent className='p-[2px]'>
-            {editedLesson.LessonOutline.map((step, index) => (
-              <div
-                key={index}
-                className='border rounded-lg p-4 mb-4 space-y-2 bg-gray-100 '>
-                {isEditing ? (
-                  <>
-                    <Label>Duration</Label>
-                    <Input
-                      value={step.Duration}
-                      onChange={(e) =>
-                        handleLessonOutlineChange(e, index, "Duration")
-                      }
-                    />
-                    <Label className='mt-4 block'>Activity</Label>
-                    <Textarea
-                      value={step.Activity}
-                      onChange={(e) =>
-                        handleLessonOutlineChange(e, index, "Activity")
-                      }
-                      rows={2}
-                    />
-                    <Label className='mt-4 block'>Remarks</Label>
-                    <Textarea
-                      value={step.Remarks}
-                      onChange={(e) =>
-                        handleLessonOutlineChange(e, index, "Remarks")
-                      }
-                      rows={2}
-                    />
-                  </>
-                ) : (
-                  <>
-                    <p>
-                      <strong>{step.Duration}</strong>
-                    </p>
-                    <p>{step.Activity}</p>
-                    <p className='text-gray-600'>{step.Remarks}</p>
-                  </>
-                )}
-              </div>
-            ))}
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mb-2'>
+              {editedLesson.LessonOutline.map((step, index) => (
+                <div
+                  key={index}
+                  className='border border-border rounded-lg p-4 bg-muted text-muted-foreground'>
+                  {isEditing ? (
+                    <>
+                      <Label>Duration</Label>
+                      <Input
+                        value={step.Duration}
+                        onChange={(e) =>
+                          handleLessonOutlineChange(e, index, "Duration")
+                        }
+                      />
+                      <Label className='mt-4 block'>Activity</Label>
+                      <Textarea
+                        value={step.Activity}
+                        onChange={(e) =>
+                          handleLessonOutlineChange(e, index, "Activity")
+                        }
+                        rows={2}
+                      />
+                      <Label className='mt-4 block'>Remarks</Label>
+                      <Textarea
+                        value={step.Remarks}
+                        onChange={(e) =>
+                          handleLessonOutlineChange(e, index, "Remarks")
+                        }
+                        rows={2}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <p>
+                        <strong>{step.Duration}</strong>
+                      </p>
+                      <p>{step.Activity}</p>
+                      <p className='text-gray-600'>{step.Remarks}</p>
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
           </AccordionContent>
         </AccordionItem>
 

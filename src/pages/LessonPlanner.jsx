@@ -59,16 +59,17 @@ function LessonPlanner() {
     <>
       <Navbar />
 
-      <section className='bg-gradient min-h-screen pt-20 px-4 sm:px-6 lg:px-8'>
-        <div className='container flex flex-col items-center md:flex-row md:items-start justify-center gap-6 mx-auto px-0 py-2  sm:p-2'>
-          <Card className='p-6 space-y-4 min-w-[250px] max-w-xl w-full md:w-2/3 lg:w-1/2'>
+      <section className='min-h-screen pt-20 px-4 sm:px-6 lg:px-8'>
+        <div className='container flex flex-col items-center md:flex-row md:items-start justify-center gap-6 mx-auto px-0 py-2 sm:p-2'>
+          {/* Input Form Card */}
+          <Card className='p-6 space-y-4 min-w-[250px] max-w-xl w-full md:w-2/3 lg:w-1/2 bg-card text-foreground border border-border'>
             <h2 className='text-xl font-semibold text-center'>
               Lesson Planner
             </h2>
 
             <div className='grid w-full items-center gap-1.5'>
-              <Label htmlFor='topic'>
-                Topic <span className='text-red-500'>*</span>
+              <Label htmlFor='topic' className='text-text'>
+                Topic <span className='text-destructive'>*</span>
               </Label>
               <Input
                 name='topic'
@@ -81,13 +82,13 @@ function LessonPlanner() {
             </div>
 
             <div className='grid w-full items-center gap-1.5'>
-              <Label htmlFor='grade-level'>
-                Grade Level <span className='text-red-500'>*</span>
+              <Label htmlFor='grade-level' className='text-text'>
+                Grade Level <span className='text-destructive'>*</span>
               </Label>
               <Input
                 name='gradeLevel'
                 id='grade-level'
-                placeholder='High School - 10th Grade  Astronomy'
+                placeholder='High School - 10th Grade Astronomy'
                 value={lesson.gradeLevel}
                 onChange={handleChange}
                 aria-label='Grade Level'
@@ -95,7 +96,9 @@ function LessonPlanner() {
             </div>
 
             <div className='grid w-full items-center gap-1.5'>
-              <Label htmlFor='lesson-duration'>Lesson Duration</Label>
+              <Label htmlFor='lesson-duration' className='text-text'>
+                Lesson Duration
+              </Label>
               <Input
                 name='duration'
                 id='lesson-duration'
@@ -149,7 +152,7 @@ function LessonPlanner() {
 
             {error.length > 0 && (
               <div
-                className='p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400'
+                className='p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-100 dark:bg-gray-800 dark:text-red-400'
                 role='alert'>
                 <span className='font-bold'>Error:</span> {error}
               </div>
@@ -158,43 +161,44 @@ function LessonPlanner() {
             <Button
               onClick={handleGenerate}
               disabled={loading}
-              className='w-full'>
+              className='w-full bg-primary text-primary-foreground hover:bg-primary/90'>
               {loading ? "Generating..." : "Generate Lesson Plan"}
             </Button>
           </Card>
 
+          {/* Loading State */}
           {loading ? (
-            <Card className='p-6 w-full min-w-[250px] max-w-xl md:w-2/3 lg:w-1/2 '>
+            <Card className='p-6 w-full min-w-[250px] max-w-xl md:w-2/3 lg:w-1/2 bg-card text-foreground border border-border'>
               <h2 className='text-xl font-semibold text-center mb-4'>
-                <Skeleton className='h-6 w-3/4 mx-auto' />
+                <Skeleton className='h-6 w-3/4 mx-auto bg-muted' />
               </h2>
 
-              <Skeleton className='h-6 mb-2' />
-              <Skeleton className='h-4 w-3/4 mb-2' />
+              <Skeleton className='h-6 mb-2 bg-muted' />
+              <Skeleton className='h-4 w-3/4 mb-2 bg-muted' />
 
-              <Skeleton className='h-6 mb-2' />
-              <Skeleton className='h-4 w-3/4 mb-2' />
+              <Skeleton className='h-6 mb-2 bg-muted' />
+              <Skeleton className='h-4 w-3/4 mb-2 bg-muted' />
 
-              <Skeleton className='h-6 mb-2' />
-              <Skeleton className='h-4 w-3/4 mb-2' />
+              <Skeleton className='h-6 mb-2 bg-muted' />
+              <Skeleton className='h-4 w-3/4 mb-2 bg-muted' />
 
-              <Skeleton className='h-6 mb-2' />
-              <Skeleton className='h-4 w-3/4 mb-2' />
-              <Skeleton className='h-4 w-1/2 mb-2' />
+              <Skeleton className='h-6 mb-2 bg-muted' />
+              <Skeleton className='h-4 w-3/4 mb-2 bg-muted' />
+              <Skeleton className='h-4 w-1/2 mb-2 bg-muted' />
 
-              <Skeleton className='h-6 mb-2' />
-              <Skeleton className='h-4 w-3/4 mb-2' />
-              <Skeleton className='h-4 w-1/2 mb-2' />
+              <Skeleton className='h-6 mb-2 bg-muted' />
+              <Skeleton className='h-4 w-3/4 mb-2 bg-muted' />
+              <Skeleton className='h-4 w-1/2 mb-2 bg-muted' />
 
-              <Skeleton className='h-6 mb-2' />
-              <Skeleton className='h-4 w-3/4 mb-2' />
-              <Skeleton className='h-4 w-1/2 mb-2' />
+              <Skeleton className='h-6 mb-2 bg-muted' />
+              <Skeleton className='h-4 w-3/4 mb-2 bg-muted' />
+              <Skeleton className='h-4 w-1/2 mb-2 bg-muted' />
 
-              <Skeleton className='h-6 mb-2' />
-              <Skeleton className='h-4 w-3/4 mb-2' />
+              <Skeleton className='h-6 mb-2 bg-muted' />
+              <Skeleton className='h-4 w-3/4 mb-2 bg-muted' />
 
-              <Skeleton className='h-8 w-full mt-4' />
-              <Skeleton className='h-8 w-full mt-4' />
+              <Skeleton className='h-8 w-full mt-4 bg-muted' />
+              <Skeleton className='h-8 w-full mt-4 bg-muted' />
             </Card>
           ) : (
             // generated lesson plan
