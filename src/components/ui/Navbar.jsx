@@ -80,7 +80,7 @@ function Navbar() {
             className={`${
               isOpen ? "block" : "hidden"
             } w-full md:flex md:w-auto md:order-1`}>
-            <ul className='flex flex-col pt-4 md:pt-0 md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-foreground'>
+            <ul className='flex flex-col py-4 mt-1 bg-background transition-colors duration-300 md:pt-0 md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-foreground'>
               <li>
                 <NavLink
                   to='/'

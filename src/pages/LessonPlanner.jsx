@@ -16,8 +16,8 @@ import { generateLessonPlan } from "@/utils/geminiApi";
 
 function LessonPlanner() {
   const [lesson, setLesson] = useState({
-    topic: "The Solar System",
-    gradeLevel: "10th",
+    topic: "",
+    gradeLevel: "",
     duration: "",
     mainConcept: "",
     subtopics: "",
