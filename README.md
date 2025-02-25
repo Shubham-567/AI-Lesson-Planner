@@ -55,6 +55,3 @@ This project is licensed under the **MIT License**.
 If you have any issues or feature requests, feel free to reach out:  
 📩 **Email:** shubhampatil1356@gmail.com  
 💬 **GitHub Issues:** [Open an Issue](https://github.com/Shubham-567/AI-Lesson-Planner/issues)  
-
----
-```
