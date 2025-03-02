@@ -36,12 +36,17 @@ function About() {
           </div>
 
           {/* Right Section Image */}
-          <div className='flex-1 flex justify-center'>
+          <div className='flex-1 flex flex-col justify-center items-center'>
             <img
               src={aboutImg}
               alt='Teaching with AI'
               className='rounded-lg shadow-md w-full max-w-lg '
             />
+
+            <p className='mt-4 text-text text-center text-lg font-medium'>
+              Designed & developed by
+              <span className='text-primary font-semibold'> Shubham</span>
+            </p>
           </div>
         </div>
       </section>

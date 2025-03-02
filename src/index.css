@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @plugin 'tailwindcss-animate';
 
@@ -85,7 +85,7 @@
 @layer base {
   :root {
     /* Background colors for light mode */
-    --background: 233 90% 96%;
+    --background: 233, 90%, 96%;
     --foreground: 235, 90%, 8%;
 
     --card: 0 0% 98%; /* Slightly off-white */
