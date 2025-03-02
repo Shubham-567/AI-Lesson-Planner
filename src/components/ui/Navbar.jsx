@@ -25,14 +25,14 @@ function Navbar() {
   }, [darkMode]);
 
   return (
-    <header className='absolute top-0 left-0 w-full shadow-sm dark:shadow-muted z-50'>
+    <header className='absolute top-0 left-0 w-full shadow-sm dark:shadow-muted border-b border-border transition-all duration-300 z-50'>
       <nav className='max-w-screen-xl min-w-[312px] mx-auto p-4'>
         <div className='flex flex-wrap items-center justify-between'>
           {/* Logo */}
           <NavLink to='/' className='flex items-center space-x-3'>
             <img
               src={Logo}
-              className='h-8 sm:h-8 md:h-9 lg:h-10 max-w-[180px] dark:invert'
+              className='h-8 sm:h-8 md:h-9 lg:h-10 w-full max-w-[180px] dark:invert'
               alt='Logo'
             />
           </NavLink>
@@ -40,7 +40,7 @@ function Navbar() {
           {/* Right-side buttons */}
           <div className='flex md:order-2 space-x-3'>
             <NavLink to='/lesson-planner'>
-              <button className='bg-primary text-primary-foreground hover:brightness-90 transition duration-300 shadow-md font-semibold rounded-lg px-3 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 text-sm sm:text-sm hidden min-[355px]:inline-block'>
+              <button className='bg-primary text-primary-foreground hover:brightness-90 shadow-md font-semibold rounded-lg px-3 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 text-sm sm:text-sm hidden min-[369px]:inline-block'>
                 Get started
               </button>
             </NavLink>
@@ -116,13 +116,13 @@ function Navbar() {
               </li>
               <li>
                 <NavLink
-                  to='/Login'
+                  to='/faqs'
                   className={({ isActive }) =>
                     isActive
                       ? "text-primary font-semibold"
                       : "hover:text-primary"
                   }>
-                  Features
+                  FAQ's
                 </NavLink>
               </li>
             </ul>

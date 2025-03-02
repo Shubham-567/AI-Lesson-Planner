@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import LessonPlanner from "./pages/LessonPlanner";
 import About from "./pages/About";
+import FAQs from "./pages/FAQ";
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           }
         />
         <Route path='/about' element={<About />} />
+        <Route path='/faqs' element={<FAQs />} />
       </Routes>
     </Router>
   );
