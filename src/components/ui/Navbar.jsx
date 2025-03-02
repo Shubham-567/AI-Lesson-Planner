@@ -25,8 +25,8 @@ function Navbar() {
   }, [darkMode]);
 
   return (
-    <header className='absolute top-0 left-0 w-full shadow-sm dark:shadow-muted border-b border-border transition-all duration-300 z-50'>
-      <nav className='max-w-screen-xl min-w-[312px] mx-auto p-4'>
+    <header className='absolute top-0 left-0 w-full shadow-xs dark:shadow-muted border-b border-border transition-all duration-300 z-50'>
+      <nav className='max-w-(--breakpoint-xl) min-w-[312px] mx-auto p-4 bg-background text-foreground transition-colors duration-300 '>
         <div className='flex flex-wrap items-center justify-between'>
           {/* Logo */}
           <NavLink to='/' className='flex items-center space-x-3'>
@@ -80,7 +80,7 @@ function Navbar() {
             className={`${
               isOpen ? "block" : "hidden"
             } w-full md:flex md:w-auto md:order-1`}>
-            <ul className='flex flex-col py-4 mt-1 bg-background transition-colors duration-300 md:pt-0 md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-foreground'>
+            <ul className='flex flex-col pt-4 mt-1 md:pt-0 md:flex-row space-y-2 md:space-y-0 md:space-x-6'>
               <li>
                 <NavLink
                   to='/'
