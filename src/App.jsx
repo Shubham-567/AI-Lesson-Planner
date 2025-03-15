@@ -5,6 +5,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import LessonPlanner from "./pages/LessonPlanner";
 import About from "./pages/About";
 import FAQs from "./pages/FAQ";
+import Register from "./pages/Register";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/Login' element={<Login />} />
+        <Route path='/Register' element={<Register />} />
         <Route
           path='/lesson-planner'
           element={

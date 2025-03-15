@@ -45,7 +45,7 @@ function About() {
 
             <p className='mt-4 text-text text-center text-lg font-medium'>
               Designed & developed by
-              <span className='text-primary font-semibold'> Shubham</span>
+              <span className='text-primary font-semibold'> Yash</span>
             </p>
           </div>
         </div>
